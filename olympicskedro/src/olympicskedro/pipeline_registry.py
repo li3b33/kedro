@@ -1,10 +1,10 @@
 from typing import Dict
 from kedro.pipeline import Pipeline
-from olympicskedro.pipelines.data_engineering import pipeline as de
+from olympicskedro.pipelines import data_engineering as de
 
 def register_pipelines() -> Dict[str, Pipeline]:
-    data_engineering = de.create_pipeline()
+    de_pipeline = de.create_pipeline()
     return {
-        "__default__": data_engineering,
-        "data_engineering": data_engineering,
+        "__default__": de_pipeline,
+        "de": de_pipeline,
     }

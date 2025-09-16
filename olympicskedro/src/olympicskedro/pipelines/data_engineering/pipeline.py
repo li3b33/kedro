@@ -1,37 +1,43 @@
-from kedro.pipeline import Pipeline, node
-from .nodes import load_data, clean_data, scale_features, create_medal_flag, save_processed_data
+from kedro.pipeline import Pipeline, node, pipeline
+from .nodes import (
+        process_winter,
+        process_summer,
+        process_dictionary,
+        scale_dictionary,
+        add_medal_flag,
+    )
 
-def create_pipeline(**kwargs):
-    """Definir el flujo de procesamiento de datos"""
-    return Pipeline([
+def create_pipeline(**kwargs) -> Pipeline:
+    return pipeline([
         node(
-            func=load_data,
-            inputs=None,
-            outputs=["winter", "summer", "dictionary"],
-            name="load_data_node"
+            func=process_winter,
+            inputs="winter",
+            outputs="winter_procesed",
+            name="process_winter_node"
         ),
         node(
-            func=clean_data,
-            inputs=["winter", "summer", "dictionary"],
-            outputs=["winter_procesed", "summer_procesed", "dictionary_procesed"],
-            name="clean_data_node"
+            func=process_summer,
+            inputs="summer",
+            outputs="summer_procesed",
+            name="process_summer_node"
         ),
         node(
-            func=scale_features,
+            func=process_dictionary,
+            inputs="dictionary",
+            outputs="dictionary_procesed",
+            name="process_dictionary_node"
+        ),
+        node(
+            func=scale_dictionary,
             inputs="dictionary_procesed",
             outputs="dictionary_scaled",
-            name="scale_features_node"
+            name="scale_dictionary_node"
         ),
         node(
-            func=create_medal_flag,
+            func=add_medal_flag,
             inputs="summer_procesed",
             outputs="summer_with_medal_flag",
-            name="create_medal_flag_node"
-        ),
-        node(
-            func=save_processed_data,
-            inputs=["winter_procesed", "summer_with_medal_flag", "dictionary_scaled"],
-            outputs=None,
-            name="save_processed_data_node"
+            name="add_medal_flag_node"
         )
     ])
+

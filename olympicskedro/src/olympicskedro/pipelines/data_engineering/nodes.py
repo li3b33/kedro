@@ -1,42 +1,40 @@
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 import numpy as np
-from sklearn.preprocessing import StandardScaler
 
-def load_data():
-    import pandas as pd
-    winter = pd.read_parquet("data/01_raw/winter.csv")
-    summer = pd.read_parquet("data/01_raw/summer.csv")
-    dictionary = pd.read_parquet("data/01_raw/dictionary.csv")
-    return winter, summer, dictionary
+def process_winter(winter: pd.DataFrame) -> pd.DataFrame:
+    # Ejemplo de limpieza básica
+    winter = winter.dropna()
+    return winter
 
-def clean_data(winter, summer, dictionary):
-    """Limpiar datos: eliminar nulos y completar valores faltantes"""
-    # Eliminar registros sin país
-    winter = winter.dropna(subset=['Country'])
-    summer = summer.dropna(subset=['Country'])
-    
-    # Rellenar datos socioeconómicos faltantes con mediana
-    dictionary['GDP per Capita'] = dictionary['GDP per Capita'].fillna(
-        dictionary['GDP per Capita'].median())
-    dictionary['Population'] = dictionary['Population'].fillna(
-        dictionary['Population'].median())
-    
-    return winter, summer, dictionary
-
-def scale_features(dictionary):
-    """Estandarizar variables numéricas"""
-    scaler = StandardScaler()
-    dictionary[['GDP_scaled', 'Population_scaled']] = scaler.fit_transform(
-        dictionary[['GDP per Capita', 'Population']])
-    return dictionary
-
-def create_medal_flag(summer):
-    """Crear variable bandera para medallas ganadas"""
-    summer['Medal_Won'] = 1
+def process_summer(summer: pd.DataFrame) -> pd.DataFrame:
+    summer = summer.dropna()
     return summer
 
-def save_processed_data(winter, summer, dictionary):
-    """Guardar datos procesados en carpeta intermediate"""
-    winter.to_parquet("data/02_intermediate/winter_procesed.parquet")
-    summer.to_parquet("data/02_intermediate/summer_procesed.parquet")
-    dictionary.to_parquet("data/02_intermediate/dictionary_procesed.parquet")
+def process_dictionary(dictionary: pd.DataFrame) -> pd.DataFrame:
+    dic = dictionary.copy()
+    dic = dic.drop_duplicates()
+
+    # Rellenar valores nulos con la mediana
+    if "GDP per Capita" in dic.columns:
+        dic["GDP per Capita"] = dic["GDP per Capita"].fillna(dic["GDP per Capita"].median())
+
+        #truncar valores
+        dic["GDP per Capita"] = dic["GDP per Capita"].fillna(dic["GDP per Capita"].median())
+        dic["GDP per Capita"] = np.trunc(dic["GDP per Capita"]).astype(int)
+
+    if "Population" in dic.columns:
+        dic["Population"] = dic["Population"].fillna(dic["Population"].median())
+
+    return dic
+
+def scale_dictionary(dictionary: pd.DataFrame) -> pd.DataFrame:
+    scaler = MinMaxScaler()
+    numeric_cols = dictionary.select_dtypes(include="number").columns
+    dictionary[numeric_cols] = scaler.fit_transform(dictionary[numeric_cols])
+    return dictionary
+
+def add_medal_flag(summer: pd.DataFrame) -> pd.DataFrame:
+    summer = summer.copy()
+    summer["medal_flag"] = summer["Medal"].notna().astype(int)
+    return summer

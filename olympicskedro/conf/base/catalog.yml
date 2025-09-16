@@ -30,5 +30,3 @@ dictionary_scaled:
 summer_with_medal_flag:
   type: pandas.ParquetDataset
   filepath: data/02_intermediate/summer_with_medal_flag.parquet
-
-  ae
