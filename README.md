@@ -71,7 +71,7 @@ Puedes configurar el umbral de cobertura de pruebas en el archivo `pyproject.tom
 
 ## 📚 Dependencias del proyecto
 
-Para ver y actualizar las dependencias de tu proyecto, usa el archivo `requirements.txt`.
+Para ver y actualizar las dependencias de el proyecto, usa el archivo `requirements.txt`.
 
 Instálalas con:
 
@@ -148,7 +148,3 @@ nbstripout --install
 ## 📦 Empaquetar tu proyecto Kedro
 
 Consulta la documentación oficial de Kedro para más información sobre cómo generar documentación del proyecto y empaquetarlo para su distribución.
-
----
-
-¿Quieres que lo guarde en un archivo `README.md` traducido?
