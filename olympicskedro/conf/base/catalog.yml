@@ -1,0 +1,34 @@
+# Datos originales (input)
+winter:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/winter.csv
+
+summer:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/summer.csv
+dictionary:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/dictionary.csv
+
+# Datos procesados (output)
+winter_procesed:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/winter_procesed.parquet
+
+summer_procesed:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/summer_procesed.parquet
+
+dictionary_procesed:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/dictionary_procesed.parquet
+
+dictionary_scaled:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/dictionary_scaled.parquet
+
+summer_with_medal_flag:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/summer_with_medal_flag.parquet
+
+  ae
