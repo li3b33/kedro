@@ -1,4 +1,11 @@
-ipython>=8.10
-jupyterlab>=3.0
-notebook
-kedro~=1.0.0
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+scikit-learn
+kedro
+kedro-viz
+kedro-datasets
+jupyter
+ipykernel
