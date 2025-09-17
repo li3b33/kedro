@@ -3,7 +3,6 @@ from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 
 def process_winter(winter: pd.DataFrame) -> pd.DataFrame:
-    # Ejemplo de limpieza básica
     winter = winter.dropna()
     return winter
 
