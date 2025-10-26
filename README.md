@@ -2,6 +2,12 @@
 
 [![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
 
+## Dataset kaggle
+https://www.kaggle.com/datasets/the-guardian/olympic-games
+
+## Video precentacion
+https://drive.google.com/drive/folders/1vNNrXJhd7qrNee-4m86045C1FjAWlilg?usp=sharing
+
 ## 🐍 Crear entorno virtual
 
 Antes de comenzar, crea un entorno virtual llamado `venv` y actívalo:
