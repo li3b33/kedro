@@ -30,3 +30,13 @@ dictionary_scaled:
 summer_with_medal_flag:
   type: pandas.ParquetDataset
   filepath: data/02_intermediate/summer_with_medal_flag.parquet
+
+# Resultados finales (modelos)
+classification_results:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/classification_results.parquet
+
+regression_results:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/regression_results.parquet
+

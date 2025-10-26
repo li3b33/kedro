@@ -1,10 +1,17 @@
 from typing import Dict
 from kedro.pipeline import Pipeline
-from olympicskedro.pipelines import data_engineering as de
+from olympicskedro.pipelines.data_engineering import pipeline as de
+from olympicskedro.pipelines.classification import pipeline as clf
+from olympicskedro.pipelines.regression import pipeline as reg
 
 def register_pipelines() -> Dict[str, Pipeline]:
-    de_pipeline = de.create_pipeline()
+    data_engineering_pipeline = de.create_pipeline()
+    classification_pipeline = clf.create_pipeline()
+    regression_pipeline = reg.create_pipeline()
+
     return {
-        "__default__": de_pipeline,
-        "de": de_pipeline,
+        "__default__": data_engineering_pipeline + classification_pipeline + regression_pipeline,
+        "data_engineering": data_engineering_pipeline,
+        "classification": classification_pipeline,
+        "regression": regression_pipeline,
     }

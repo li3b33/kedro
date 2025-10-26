@@ -1,35 +1,47 @@
 from kedro.pipeline import Pipeline, node, pipeline
 from .nodes import (
-        process_winter,
-        process_summer,
-        process_dictionary,
-        scale_dictionary,
-        add_medal_flag,
-    )
+    clean_dataset,
+    truncate_gdp,
+    fill_missing_gdp,
+    scale_dictionary,
+    add_medal_flag
+)
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(
-            func=process_winter,
+            func=clean_dataset,
             inputs="winter",
             outputs="winter_procesed",
-            name="process_winter_node"
+            name="clean_winter_node"
         ),
         node(
-            func=process_summer,
+            func=clean_dataset,
             inputs="summer",
             outputs="summer_procesed",
-            name="process_summer_node"
+            name="clean_summer_node"
         ),
         node(
-            func=process_dictionary,
+            func=clean_dataset,
             inputs="dictionary",
             outputs="dictionary_procesed",
-            name="process_dictionary_node"
+            name="clean_dictionary_node"
+        ),
+        node(
+            func=truncate_gdp,
+            inputs="dictionary_procesed",
+            outputs="dictionary_truncated",
+            name="truncate_gdp_node"
+        ),
+        node(
+            func=fill_missing_gdp,
+            inputs="dictionary_truncated",
+            outputs="dictionary_filled",
+            name="fill_missing_gdp_node"
         ),
         node(
             func=scale_dictionary,
-            inputs="dictionary_procesed",
+            inputs="dictionary_filled",
             outputs="dictionary_scaled",
             name="scale_dictionary_node"
         ),
@@ -40,4 +52,3 @@ def create_pipeline(**kwargs) -> Pipeline:
             name="add_medal_flag_node"
         )
     ])
-
