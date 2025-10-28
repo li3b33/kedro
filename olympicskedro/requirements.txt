@@ -9,3 +9,5 @@ kedro-viz
 kedro-datasets
 jupyter
 ipykernel
+pyarrow
+fastparquet
