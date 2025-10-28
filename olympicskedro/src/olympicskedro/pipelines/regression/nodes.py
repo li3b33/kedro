@@ -10,12 +10,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
-<<<<<<< HEAD
-=======
-from sklearn.svm import SVR
-import numpy as np
-from sklearn.model_selection import GridSearchCV
->>>>>>> 68b05db74144302a901bcdd399921975b2fc6ddf
 
 def prepare_dictionary_data(df: pd.DataFrame):
     """

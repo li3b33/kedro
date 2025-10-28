@@ -2,7 +2,6 @@ import os
 import joblib
 import pandas as pd
 from sklearn.svm import SVC
-<<<<<<< HEAD
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV
@@ -11,9 +10,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-=======
-from sklearn.model_selection import GridSearchCV
->>>>>>> 68b05db74144302a901bcdd399921975b2fc6ddf
 
 def prepare_summer_data(df: pd.DataFrame):
     """
