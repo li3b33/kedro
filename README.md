@@ -5,7 +5,7 @@
 ## Dataset kaggle
 https://www.kaggle.com/datasets/the-guardian/olympic-games
 
-## Video precentacion
+## Video presentación
 https://drive.google.com/drive/folders/1vNNrXJhd7qrNee-4m86045C1FjAWlilg?usp=sharing
 
 ## 🐍 Crear entorno virtual
