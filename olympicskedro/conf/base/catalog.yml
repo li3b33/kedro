@@ -40,3 +40,30 @@ regression_results:
   type: pandas.ParquetDataset
   filepath: data/07_model_output/regression_results.parquet
 
+# Salidas del pipeline de reporting
+classification_summary:
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/classification_summary.csv
+  load_args:
+    encoding: latin1
+  save_args:
+    index: False
+    encoding: latin1
+
+regression_summary:
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/regression_summary.csv
+  load_args:
+    encoding: latin1
+  save_args:
+    index: False
+    encoding: latin1
+
+final_model_summary:
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/final_model_summary.csv
+  load_args:
+    encoding: latin1
+  save_args:
+    index: False
+    encoding: latin1
