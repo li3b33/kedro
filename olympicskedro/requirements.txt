@@ -11,3 +11,5 @@ jupyter
 ipykernel
 pyarrow
 fastparquet
+imblearn
+lightgbm
