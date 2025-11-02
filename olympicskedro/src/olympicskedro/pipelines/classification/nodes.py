@@ -1,8 +1,10 @@
 import os
 import joblib
+import json
 import numpy as np
 import pandas as pd
 
+from pathlib import Path
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler
@@ -256,5 +258,26 @@ def train_classification_models(data):
     print("RESULTADOS FINALES CLASIFICACIÓN (ordenados por AUC):")
     print("="*60)
     print(results_df.sort_values("AUC_ROC", ascending=False).to_string(index=False))
+
+    # Guardar también un resumen en formato plano compatible con DVC
+    metrics_output = Path("data/08_reporting/classification_metrics.json")
+    metrics_output.parent.mkdir(parents=True, exist_ok=True)
+
+    metrics_dict = {
+        row["Model"]: {
+            "Accuracy": row["Accuracy"],
+            "F1_Score": row["F1_Score"],
+            "Precision": row["Precision"],
+            "Recall": row["Recall"],
+            "AUC_ROC": row["AUC_ROC"]
+        }
+        for _, row in results_df.iterrows()
+    }
+
+    with open(metrics_output, "w") as f:
+        json.dump(metrics_dict, f, indent=4)
+
+    print(f"\n✅ Métricas guardadas en: {metrics_output}")
+
     
     return results_df
