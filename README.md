@@ -22,11 +22,27 @@ Una vez activado, puedes instalar las dependencias como se indica más abajo.
 
 ---
 
-## 📝 Descripción general
+🧱 Descripción general del proyecto
 
-Este es tu nuevo proyecto Kedro, que fue generado utilizando **Kedro 1.0.0**.
+Este proyecto implementa un pipeline de Machine Learning sobre datos históricos de los Juegos Olímpicos utilizando:
 
-Consulta la [documentación oficial de Kedro](https://docs.kedro.org/) para comenzar.
+Kedro → para estructurar y ejecutar pipelines de datos reproducibles
+
+DVC → para versionar datasets y modelos
+
+Airflow → para orquestar la ejecución automatizada de pipelines
+
+Docker → para desplegar y ejecutar todo el ecosistema en contenedores
+
+## El proyecto incluye pipelines de:
+
+Data Engineering (preprocesamiento y limpieza)
+
+Classification (5 modelos de clasificación)
+
+Regression (modelos de predicción continua)
+
+Reporting (generación de métricas y resultados)
 
 ---
 
@@ -60,6 +76,93 @@ Puedes ejecutar tu proyecto Kedro con:
 ```
 kedro run
 ```
+
+## Ejecutar pipelines específicos
+
+```
+kedro run --pipeline=data_engineering
+kedro run --pipeline=classification
+kedro run --pipeline=regression
+```
+
+---
+
+## 💾 Control de versiones con DVC
+
+El proyecto utiliza DVC (Data Version Control) para rastrear datasets y modelos.
+Pasos básicos:
+
+```
+dvc init
+dvc add data/01_raw data/02_intermediate data/07_model_output
+git add .
+git commit -m "Track data with DVC"
+```
+
+Para guardar versiones de los datos:
+
+```
+dvc push
+```
+
+---
+
+## ☁️ Orquestación con Apache Airflow
+
+El DAG principal se llama olympicskedro_pipeline
+y se encuentra en:
+
+```
+airflow_dags/olympicskedro_dag.py
+```
+
+Levantar Airflow con Docker
+
+Asegúrate de tener Docker corriendo y ejecuta:
+
+```
+docker compose up -d
+```
+
+Accede a la interfaz web:
+
+👉 http://localhost:8080
+
+Credenciales por defecto:
+
+**Usuario:** admin
+**Contraseña:** admin
+
+
+Ejecuta manualmente el DAG desde la interfaz para correr todo el pipeline Kedro dentro de los contenedores.
+
+---
+
+## 🐳 Docker
+
+(https://www.docker.com)
+
+El proyecto se ejecuta dentro de un entorno Dockerizado.
+
+Construir las imágenes
+
+```
+docker compose build --no-cache
+```
+
+Iniciar todos los servicios
+
+```
+docker compose up -d
+```
+
+Esto levantará:
+
+- PostgreSQL (base de datos de Airflow)
+
+- Airflow Webserver
+
+- Airflow Scheduler
 
 ---
 
