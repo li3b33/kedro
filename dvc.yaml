@@ -1,0 +1,14 @@
+stages:
+  classification_models:
+    cmd: cmd /c "cd olympicskedro && python -m kedro run 
+      --pipeline=classification"
+    deps:
+    - olympicskedro/src/olympicskedro/pipelines/classification/nodes.py
+    outs:
+    - olympicskedro/data/07_model_output
+  classification_metrics:
+    cmd: python -m kedro run --pipeline=classification
+    deps:
+    - olympicskedro/data/07_model_output
+    outs:
+    - olympicskedro/data/08_reporting/classification_metrics.json
