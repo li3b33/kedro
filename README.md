@@ -22,7 +22,7 @@ Una vez activado, puedes instalar las dependencias como se indica más abajo.
 
 ---
 
-🧱 Descripción general del proyecto
+## 🧱 Descripción general del proyecto
 
 Este proyecto implementa un pipeline de Machine Learning sobre datos históricos de los Juegos Olímpicos utilizando:
 
