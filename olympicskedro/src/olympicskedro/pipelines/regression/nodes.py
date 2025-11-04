@@ -1,8 +1,11 @@
 import os
 import joblib
+import json
 import numpy as np
 import pandas as pd
 
+from pathlib import Path
+from sklearn import metrics
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, RobustScaler, PolynomialFeatures
@@ -307,11 +310,35 @@ def train_regression_models(data):
     
     except Exception as e:
         print(f"❌ Error creando ensemble: {str(e)}")
-    
-    # Mostrar resultados finales
+
+        
+    # Guardar también métricas planas compatibles con DVC
+    metrics_output = Path("data/08_reporting/regression_metrics_flat.json")
+    metrics_output.parent.mkdir(parents=True, exist_ok=True)
+
+    metrics_dict = {
+        row["Model"]: {
+            "RMSE": row["RMSE"],
+            "MAE": row["MAE"],
+            "R2_Score": row["R2_Score"],
+            "MAPE": row["MAPE"],
+            "CV_R2_Mean": row["CV_R2_Mean"]
+        }
+        for _, row in results_df.iterrows()
+    }
+
+    with open(metrics_output, "w") as f:
+        json.dump(metrics_dict, f, indent=4)
+
+    print(f"\n✅ Métricas guardadas en: {metrics_output}")
+
+
+    # ==========================================================
+    # MOSTRAR RESULTADOS FINALES
+    # ==========================================================
     print("\n" + "="*60)
     print("RESULTADOS FINALES REGRESIÓN (ordenados por R2 Score):")
     print("="*60)
     print(results_df.sort_values("R2_Score", ascending=False).to_string(index=False))
-    
+
     return results_df

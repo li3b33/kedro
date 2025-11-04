@@ -260,7 +260,7 @@ def train_classification_models(data):
     print(results_df.sort_values("AUC_ROC", ascending=False).to_string(index=False))
 
     # Guardar también un resumen en formato plano compatible con DVC
-    metrics_output = Path("data/08_reporting/classification_metrics.json")
+    metrics_output = Path("data/08_reporting/classification_metrics_flat.json")
     metrics_output.parent.mkdir(parents=True, exist_ok=True)
 
     metrics_dict = {

@@ -1,9 +1,22 @@
 stages:
   classification_models:
-    cmd: cmd=cd olympicskedro && python -m kedro run --pipeline=classification
+    cmd: python -m kedro run --pipeline=classification
     deps:
-    - olympicskedro/src/olympicskedro/pipelines/classification/nodes.py
+      - src/olympicskedro/pipelines/classification/nodes.py
+      - data/02_intermediate/summer_with_medal_flag.parquet
     outs:
-    - olympicskedro/data/07_model_output
+      - data/06_models/classification/
     metrics:
-    - olympicskedro/data/08_reporting/classification_metrics.json
+      - data/08_reporting/classification_metrics_flat.json
+
+
+  regression_models:
+    cmd: python -m kedro run --pipeline=regression
+    deps:
+      - src/olympicskedro/pipelines/regression/nodes.py
+      - data/02_intermediate/summer_with_medal_flag.parquet
+    outs:
+      - data/06_models/regression/
+    metrics:
+      - data/08_reporting/regression_metrics_flat.json
+
