@@ -4,6 +4,8 @@
 
 ## Dataset kaggle
 https://www.kaggle.com/datasets/the-guardian/olympic-games
+[![Dataset OlympicsKedro](https://img.shields.io/badge/Dataset-OlympicsKedro-darkblue?logo=kaggle)](https://www.kaggle.com/datasets/the-guardian/olympic-games)
+
 
 ## Video presentación Ev2 
 [![Video Explicativo OlympicsKedro](https://img.shields.io/badge/Video%20Explicativo-OlympicsKedro-blue?logo=google-drive)](https://drive.google.com/file/d/10TGaQiC0rRztdoMYyrjEVfpetHDd8PZD/view?usp=sharing)
