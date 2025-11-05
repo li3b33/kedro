@@ -5,40 +5,40 @@ stages:
     deps:
     - path: data/02_intermediate/summer_with_medal_flag.parquet
       hash: md5
-      md5: 27f5c84a663e2563aebb5f414d6f9748
-      size: 630915
+      md5: e8f154855b62f1f21a513095292ae631
+      size: 624311
     - path: src/olympicskedro/pipelines/classification/nodes.py
       hash: md5
-      md5: f9f7b5420c0e1b1a238e397c3bad259e
-      size: 11288
+      md5: 557f0ffc84c2429f389890ec899297cf
+      size: 11696
     outs:
     - path: data/06_models/classification/
       hash: md5
-      md5: ede13a647afc24a93847c6056f90a5d0.dir
-      size: 4643100
+      md5: 033a2c16b33516d3f3639407e94f49da.dir
+      size: 4639340
       nfiles: 5
     - path: data/08_reporting/classification_metrics_flat.json
       hash: md5
-      md5: d04e9c35fde1cfc4a54c1d9694f7ae0b
-      size: 1097
+      md5: 920b1a9c9294cd4216c0db1e629789a8
+      size: 796
   regression_models:
     cmd: python -m kedro run --pipeline=regression
     deps:
     - path: data/02_intermediate/summer_with_medal_flag.parquet
       hash: md5
-      md5: 27f5c84a663e2563aebb5f414d6f9748
-      size: 630915
+      md5: e8f154855b62f1f21a513095292ae631
+      size: 624311
     - path: src/olympicskedro/pipelines/regression/nodes.py
       hash: md5
-      md5: d9e4f453af968a66da08e443b9786e5e
-      size: 13872
+      md5: 24c29f9a76f42d646eee66e4b9dac0a0
+      size: 14282
     outs:
     - path: data/06_models/regression/
       hash: md5
-      md5: c903126f0e35b855bceca6367dde901a.dir
-      size: 1087611
-      nfiles: 5
+      md5: 863866071223ff330325978fe31d9b23.dir
+      size: 1200288
+      nfiles: 6
     - path: data/08_reporting/regression_metrics_flat.json
       hash: md5
-      md5: 2259843bdd9a6f18575e65c87f5b96ee
-      size: 1134
+      md5: d48de468b70cbff05ade231f171738d4
+      size: 912

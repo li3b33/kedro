@@ -327,8 +327,20 @@ def train_regression_models(data):
         for _, row in results_df.iterrows()
     }
 
+    # === FORMATEO DE MÉTRICAS PARA DVC ===
+    # Redondea valores a 2 decimales y ordena las claves
+    rounded_metrics = {
+        model: {
+            k: round(v, 2) if isinstance(v, (float, int)) else v
+            for k, v in sorted(metrics.items())
+        }
+        for model, metrics in sorted(metrics_dict.items())
+}
+
+    # Guarda métricas en formato limpio para DVC
     with open(metrics_output, "w") as f:
-        json.dump(metrics_dict, f, indent=4)
+        json.dump(rounded_metrics, f, indent=4, sort_keys=True)
+
 
     print(f"\n✅ Métricas guardadas en: {metrics_output}")
 
