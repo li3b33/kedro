@@ -142,7 +142,8 @@ Ejecuta manualmente el DAG desde la interfaz para correr todo el pipeline Kedro 
 
 ## 🐳 Docker
 
-(https://www.docker.com)
+[![Docker](https://img.shields.io/badge/Visita-Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
+
 
 El proyecto se ejecuta dentro de un entorno Dockerizado.
 
