@@ -7,6 +7,8 @@ https://www.kaggle.com/datasets/the-guardian/olympic-games
 
 ## Video presentación Ev2 
 https://drive.google.com/file/d/1ufLL5GsWMHaNYclvSCpVqR4Nqa5dyV99/view?usp=sharing
+[![Video Explicativo OlympicsKedro](https://img.shields.io/badge/Video%20Explicativo-OlympicsKedro-blue?logo=google-drive)](https://drive.google.com/file/d/10TGaQiC0rRztdoMYyrjEVfpetHDd8PZD/view?usp=sharing)
+
 
 ## 🐍 Crear entorno virtual
 
