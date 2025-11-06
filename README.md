@@ -1,15 +1,15 @@
 # OlympicsKedro
 
 [![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
-[![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
 
 
 ## Dataset kaggle
-[![Dataset Olympics Games](https://img.shields.io/badge/Dataset-Olympics_Games-darkblue?logo=kaggle)](https://www.kaggle.com/datasets/the-guardian/olympic-games)
+[![Dataset](https://img.shields.io/badge/-Dataset_Olympics_Games-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/the-guardian/olympic-games)
+
 
 
 ## Video presentación Ev2 
-[![Video Explicativo OlympicsKedro](https://img.shields.io/badge/Video%20Explicativo-OlympicsKedro-blue?logo=google-drive)](https://drive.google.com/file/d/10TGaQiC0rRztdoMYyrjEVfpetHDd8PZD/view?usp=sharing)
+[![Video](https://img.shields.io/badge/-Video_Explicativo_OlympicsKedro-4285F4?logo=google-drive&logoColor=white)](https://drive.google.com/file/d/10TGaQiC0rRztdoMYyrjEVfpetHDd8PZD/view?usp=sharing)
 
 
 ## 🐍 Crear entorno virtual
@@ -144,7 +144,7 @@ Ejecuta manualmente el DAG desde la interfaz para correr todo el pipeline Kedro 
 
 ## 🐳 Docker
 
-[![Docker](https://img.shields.io/badge/Visita-Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
+[![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
 
 
 El proyecto se ejecuta dentro de un entorno Dockerizado.
