@@ -9,7 +9,8 @@
 
 
 ## Video presentación Ev2 
-[![Video](https://img.shields.io/badge/-Video_Explicativo_OlympicsKedro-4285F4?logo=google-drive&logoColor=white)](https://drive.google.com/file/d/10TGaQiC0rRztdoMYyrjEVfpetHDd8PZD/view?usp=sharing)
+[![Video](https://img.shields.io/badge/-Video_Explicativo_OlympicsKedro-4285F4?logo=google-drive&logoColor=white)]
+(https://drive.google.com/file/d/1YgcR6Xv4p7QSginYgnExgHLqoo-wqFcM/view?usp=sharing)
 
 
 ## 🐍 Crear entorno virtual
