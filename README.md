@@ -1,6 +1,8 @@
 # OlympicsKedro
 
 [![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
+[![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
+
 
 ## Dataset kaggle
 [![Dataset Olympics Games](https://img.shields.io/badge/Dataset-Olympics_Games-darkblue?logo=kaggle)](https://www.kaggle.com/datasets/the-guardian/olympic-games)
