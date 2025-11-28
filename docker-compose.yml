@@ -17,14 +17,15 @@ services:
     depends_on:
       - postgres
     environment:
-      - AIRFLOW__WEBSERVER__SECRET_KEY= supersecretkey123
+      - AIRFLOW__WEBSERVER__SECRET_KEY=supersecretkey123
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
-      - AIRFLOW__CORE__FERNET_KEY=YOUR_FERNET_KEY_HERE
-      - _PIP_ADDITIONAL_REQUIREMENTS=
+      - AIRFLOW__CORE__FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      - AIRFLOW__CORE__DAGS_FOLDER=/opt/airflow/dags
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
     command: >
-      bash -c "airflow db upgrade &&
-               airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin &&
+      bash -c "airflow db init &&
+               airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin --password admin &&
                exit 0"
     volumes:
       - ./airflow_dags:/opt/airflow/dags
@@ -39,8 +40,10 @@ services:
     environment:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
-      - AIRFLOW__CORE__FERNET_KEY=YOUR_FERNET_KEY_HERE
-      - AIRFLOW__WEBSERVER__SECRET_KEY= supersecretkey123
+      - AIRFLOW__CORE__FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      - AIRFLOW__WEBSERVER__SECRET_KEY=supersecretkey123
+      - AIRFLOW__CORE__DAGS_FOLDER=/opt/airflow/dags
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
     ports:
       - "8080:8080"
     command: webserver
@@ -56,8 +59,10 @@ services:
     environment:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
-      - AIRFLOW__CORE__FERNET_KEY=YOUR_FERNET_KEY_HERE
-      - AIRFLOW__WEBSERVER__SECRET_KEY= supersecretkey123
+      - AIRFLOW__CORE__FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      - AIRFLOW__WEBSERVER__SECRET_KEY=supersecretkey123
+      - AIRFLOW__CORE__DAGS_FOLDER=/opt/airflow/dags
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
     command: scheduler
     volumes:
       - ./airflow_dags:/opt/airflow/dags

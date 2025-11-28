@@ -21,8 +21,9 @@ USER airflow
 
 # Instalamos las dependencias Python del proyecto
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir umap-learn pyod mixtend hdbscan shap plotly
 
-# (Opcional) instalar el proyecto Kedro como paquete si quieres ejecutar `kedro run`
-# RUN pip install -e ./olympicskedro
+# Instalar el proyecto Kedro como paquete
+RUN pip install -e ./olympicskedro
 
 WORKDIR /opt/airflow

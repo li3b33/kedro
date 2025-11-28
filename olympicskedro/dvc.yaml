@@ -20,3 +20,45 @@ stages:
     metrics:
       - data/08_reporting/regression_metrics_flat.json
 
+  unsupervised_models:
+    cmd: python -m kedro run --pipeline=unsupervised
+    deps:
+      - src/olympicskedro/pipelines/unsupervised_learning/nodes.py
+      - data/02_intermediate/summer_with_medal_flag.parquet
+      - data/02_intermediate/dictionary_scaled.parquet
+    outs:
+      - data/06_models/unsupervised/
+      - data/07_model_output/clustering_results.parquet
+      - data/07_model_output/pca_results.parquet
+      - data/07_model_output/tsne_results.parquet
+      - data/07_model_output/anomaly_results.parquet
+    metrics:
+      - data/08_reporting/unsupervised_metrics_flat.json
+      - data/08_reporting/clustering_metrics.csv
+      - data/08_reporting/unsupervised_summary.csv
+  
+  integration_models:
+    cmd: python -m kedro run --pipeline=integration
+    deps:
+      - src/olympicskedro/pipelines/integration/nodes.py
+      - data/02_intermediate/summer_with_medal_flag.parquet
+      - data/07_model_output/clustering_results.parquet
+    outs:
+      - data/06_models/integration/
+      - data/07_model_output/integrated_model_results.parquet
+      - data/07_model_output/integration_comparison.parquet
+    metrics:
+      - data/08_reporting/integration_metrics.json
+
+  innovation_dashboard:
+    cmd: python -m kedro run --pipeline=innovation
+    deps:
+      - src/olympicskedro/pipelines/innovation/nodes.py
+      - data/07_model_output/clustering_results.parquet
+      - data/07_model_output/pattern_analysis_results.parquet
+    outs:
+      - data/08_reporting/clustering_3d_dashboard.html
+      - data/08_reporting/pattern_heatmap.html
+      - data/08_reporting/model_comparison_dashboard.html
+      - data/08_reporting/advanced_metrics_dashboard.html
+      - data/08_reporting/innovation_report.json

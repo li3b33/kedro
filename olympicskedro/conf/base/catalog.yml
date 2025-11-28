@@ -67,3 +67,88 @@ final_model_summary:
   save_args:
     index: False
     encoding: latin1
+
+# ============ NO SUPERVISADO - CLUSTERING ============
+clustering_features:
+  type: pandas.ParquetDataset
+  filepath: data/02_intermediate/clustering_features.parquet
+
+clustering_results:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/clustering_results.parquet
+
+kmeans_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/unsupervised/kmeans_model.pkl
+
+dbscan_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/unsupervised/dbscan_model.pkl
+
+hierarchical_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/unsupervised/hierarchical_model.pkl
+
+# ============ REDUCCIÓN DIMENSIONAL ============
+pca_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/unsupervised/pca_model.pkl
+
+pca_results:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/pca_results.parquet
+
+tsne_results:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/tsne_results.parquet
+
+# ============ DETECCIÓN ANOMALÍAS ============
+anomaly_results:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/anomaly_results.parquet
+
+isolation_forest_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/unsupervised/isolation_forest_model.pkl
+
+# ============ REPORTING NO SUPERVISADO ============
+clustering_metrics:
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/clustering_metrics.csv
+  save_args:
+    index: False
+
+unsupervised_summary:
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/unsupervised_summary.csv
+  save_args:
+    index: False
+
+clustering_visualization_data:
+  type: pandas.ParquetDataset
+  filepath: data/08_reporting/clustering_visualization_data.parquet
+
+# ============ INTEGRACIÓN SUPERVISADO + NO SUPERVISADO ============
+integrated_split_data:
+  type: pickle.PickleDataset
+  filepath: data/02_intermediate/integrated_split_data.pkl
+
+integrated_model_results:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/integrated_model_results.parquet
+
+integration_comparison:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/integration_comparison.parquet
+
+integration_metrics:
+  type: MemoryDataset
+
+# ============ ANÁLISIS DE PATRONES ============
+pattern_analysis_results:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/pattern_analysis_results.parquet
+
+# ============ INNOVACIÓN ============
+innovation_results:
+  type: MemoryDataset
